@@ -40,32 +40,32 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @interface QTProperties : NSObject
-@property (nonatomic, assign)         double mag;
-@property (nonatomic, copy)           NSString *place;
-@property (nonatomic, assign)         NSInteger time;
-@property (nonatomic, assign)         NSInteger updated;
-@property (nonatomic, assign)         NSInteger tz;
-@property (nonatomic, copy)           NSString *url;
-@property (nonatomic, copy)           NSString *detail;
-@property (nonatomic, nullable, copy) id felt;
-@property (nonatomic, nullable, copy) id cdi;
-@property (nonatomic, nullable, copy) id mmi;
-@property (nonatomic, nullable, copy) id alert;
-@property (nonatomic, copy)           NSString *status;
-@property (nonatomic, assign)         NSInteger tsunami;
-@property (nonatomic, assign)         NSInteger sig;
-@property (nonatomic, copy)           NSString *net;
-@property (nonatomic, copy)           NSString *code;
-@property (nonatomic, copy)           NSString *ids;
-@property (nonatomic, copy)           NSString *sources;
-@property (nonatomic, copy)           NSString *types;
-@property (nonatomic, assign)         NSInteger nst;
-@property (nonatomic, assign)         double dmin;
-@property (nonatomic, assign)         double rms;
-@property (nonatomic, assign)         NSInteger gap;
-@property (nonatomic, copy)           NSString *magType;
-@property (nonatomic, copy)           NSString *type;
-@property (nonatomic, copy)           NSString *title;
+@property (nonatomic, assign)           double mag;
+@property (nonatomic, copy)             NSString *place;
+@property (nonatomic, assign)           NSInteger time;
+@property (nonatomic, assign)           NSInteger updated;
+@property (nonatomic, assign)           NSInteger tz;
+@property (nonatomic, copy)             NSString *url;
+@property (nonatomic, copy)             NSString *detail;
+@property (nonatomic, nullable, copy)   id felt;
+@property (nonatomic, nullable, copy)   id cdi;
+@property (nonatomic, nullable, copy)   id mmi;
+@property (nonatomic, nullable, copy)   id alert;
+@property (nonatomic, copy)             NSString *status;
+@property (nonatomic, assign)           NSInteger tsunami;
+@property (nonatomic, assign)           NSInteger sig;
+@property (nonatomic, copy)             NSString *net;
+@property (nonatomic, copy)             NSString *code;
+@property (nonatomic, copy)             NSString *ids;
+@property (nonatomic, copy)             NSString *sources;
+@property (nonatomic, copy)             NSString *types;
+@property (nonatomic, nullable, strong) NSNumber *nst;
+@property (nonatomic, assign)           double dmin;
+@property (nonatomic, nullable, strong) NSNumber *rms;
+@property (nonatomic, assign)           double gap;
+@property (nonatomic, copy)             NSString *magType;
+@property (nonatomic, copy)             NSString *type;
+@property (nonatomic, copy)             NSString *title;
 @end
 
 @interface QTMetadata : NSObject

@@ -111,16 +111,16 @@ namespace QuickType
         public string Types { get; set; }
 
         [JsonProperty("nst")]
-        public long Nst { get; set; }
+        public long? Nst { get; set; }
 
         [JsonProperty("dmin")]
         public double Dmin { get; set; }
 
         [JsonProperty("rms")]
-        public double Rms { get; set; }
+        public double? Rms { get; set; }
 
         [JsonProperty("gap")]
-        public long Gap { get; set; }
+        public double Gap { get; set; }
 
         [JsonProperty("magType")]
         public string MagType { get; set; }

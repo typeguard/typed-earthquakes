@@ -37,10 +37,10 @@ class Properties {
     ids: String
     sources: String
     types: String
-    nst: Int
+    nst: Maybe<Int>
     dmin: Double
-    rms: Double
-    gap: Int
+    rms: Maybe<Double>
+    gap: Double
     magType: String
     type: String
     title: String
