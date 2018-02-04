@@ -1,4 +1,4 @@
-# Typed USGS Earthquake Data
+# USGS Earthquake Data – Typed JSON API
 
 > Live earthquakes happening NOW!
 
