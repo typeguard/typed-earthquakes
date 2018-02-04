@@ -1,0 +1,56 @@
+class Earthquakes {
+    type: String
+    metadata: Metadata
+    features: List<Feature>
+    bbox: List<Double>
+}
+
+class Feature {
+    type: String
+    properties: Properties
+    geometry: Geometry
+    id: String
+}
+
+class Geometry {
+    type: String
+    coordinates: List<Double>
+}
+
+class Properties {
+    mag: Double
+    place: String
+    time: Int
+    updated: Int
+    tz: Int
+    url: String
+    detail: String
+    felt: Null
+    cdi: Null
+    mmi: Null
+    alert: Null
+    status: String
+    tsunami: Int
+    sig: Int
+    net: String
+    code: String
+    ids: String
+    sources: String
+    types: String
+    nst: Int
+    dmin: Double
+    rms: Double
+    gap: Int
+    magType: String
+    type: String
+    title: String
+}
+
+class Metadata {
+    generated: Int
+    url: String
+    title: String
+    status: Int
+    api: String
+    count: Int
+}

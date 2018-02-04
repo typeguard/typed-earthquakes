@@ -1,0 +1,227 @@
+{
+    "$ref": "#/definitions/Earthquakes",
+    "definitions": {
+        "Metadata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "generated": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "api": {
+                    "type": "string"
+                },
+                "count": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "api",
+                "count",
+                "generated",
+                "status",
+                "title",
+                "url"
+            ],
+            "title": "metadata"
+        },
+        "Properties": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "mag": {
+                    "type": "number"
+                },
+                "place": {
+                    "type": "string"
+                },
+                "time": {
+                    "type": "integer"
+                },
+                "updated": {
+                    "type": "integer"
+                },
+                "tz": {
+                    "type": "integer"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "detail": {
+                    "type": "string"
+                },
+                "felt": {
+                    "type": "null"
+                },
+                "cdi": {
+                    "type": "null"
+                },
+                "mmi": {
+                    "type": "null"
+                },
+                "alert": {
+                    "type": "null"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "tsunami": {
+                    "type": "integer"
+                },
+                "sig": {
+                    "type": "integer"
+                },
+                "net": {
+                    "type": "string"
+                },
+                "code": {
+                    "type": "string"
+                },
+                "ids": {
+                    "type": "string"
+                },
+                "sources": {
+                    "type": "string"
+                },
+                "types": {
+                    "type": "string"
+                },
+                "nst": {
+                    "type": "integer"
+                },
+                "dmin": {
+                    "type": "number"
+                },
+                "rms": {
+                    "type": "number"
+                },
+                "gap": {
+                    "type": "integer"
+                },
+                "magType": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "alert",
+                "cdi",
+                "code",
+                "detail",
+                "dmin",
+                "felt",
+                "gap",
+                "ids",
+                "mag",
+                "magType",
+                "mmi",
+                "net",
+                "nst",
+                "place",
+                "rms",
+                "sig",
+                "sources",
+                "status",
+                "time",
+                "title",
+                "tsunami",
+                "type",
+                "types",
+                "tz",
+                "updated",
+                "url"
+            ],
+            "title": "properties"
+        },
+        "Geometry": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "geometry"
+        },
+        "Feature": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/Properties"
+                },
+                "geometry": {
+                    "$ref": "#/definitions/Geometry"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "geometry",
+                "id",
+                "properties",
+                "type"
+            ],
+            "title": "feature"
+        },
+        "Earthquakes": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
+                },
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Feature"
+                    }
+                },
+                "bbox": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "bbox",
+                "features",
+                "metadata",
+                "type"
+            ],
+            "title": "Earthquakes"
+        }
+    }
+}
