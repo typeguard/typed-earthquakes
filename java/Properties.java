@@ -25,7 +25,7 @@ public class Properties {
     private String types;
     private Long nst;
     private double dmin;
-    private Double rms;
+    private double rms;
     private double gap;
     private String magType;
     private String type;
@@ -137,9 +137,9 @@ public class Properties {
     public void setDmin(double value) { this.dmin = value; }
 
     @JsonProperty("rms")
-    public Double getRms() { return rms; }
+    public double getRms() { return rms; }
     @JsonProperty("rms")
-    public void setRms(Double value) { this.rms = value; }
+    public void setRms(double value) { this.rms = value; }
 
     @JsonProperty("gap")
     public double getGap() { return gap; }

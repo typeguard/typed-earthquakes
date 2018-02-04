@@ -110,15 +110,7 @@
                     "type": "number"
                 },
                 "rms": {
-                    "oneOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "rms"
+                    "type": "number"
                 },
                 "gap": {
                     "type": "number"

@@ -48,7 +48,7 @@ export interface Properties {
     types:   string;
     nst?:    number;
     dmin:    number;
-    rms?:    number;
+    rms:     number;
     gap:     number;
     magType: string;
     type:    string;
@@ -191,7 +191,7 @@ export module Convert {
             types: "",
             nst: U(0, null),
             dmin: 3.14,
-            rms: U(3.14, null),
+            rms: 3.14,
             gap: 3.14,
             magType: "",
             type: "",

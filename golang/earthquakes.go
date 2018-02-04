@@ -58,7 +58,7 @@ type Properties struct {
 	Types   string      `json:"types"`
 	Nst     *int64      `json:"nst"`
 	Dmin    float64     `json:"dmin"`
-	RMS     *float64    `json:"rms"`
+	RMS     float64     `json:"rms"`
 	Gap     float64     `json:"gap"`
 	MagType string      `json:"magType"`
 	Type    string      `json:"type"`

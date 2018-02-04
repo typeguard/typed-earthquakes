@@ -39,7 +39,7 @@ namespace quicktype {
         std::string types;
         std::unique_ptr<int64_t> nst;
         double dmin;
-        std::unique_ptr<double> rms;
+        double rms;
         double gap;
         std::string mag_type;
         std::string type;
@@ -135,7 +135,7 @@ namespace nlohmann {
         _x.types = _j.at("types").get<std::string>();
         _x.nst = quicktype::get_optional<int64_t>(_j, "nst");
         _x.dmin = _j.at("dmin").get<double>();
-        _x.rms = quicktype::get_optional<double>(_j, "rms");
+        _x.rms = _j.at("rms").get<double>();
         _x.gap = _j.at("gap").get<double>();
         _x.mag_type = _j.at("magType").get<std::string>();
         _x.type = _j.at("type").get<std::string>();

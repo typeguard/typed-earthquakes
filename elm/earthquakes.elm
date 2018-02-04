@@ -68,7 +68,7 @@ type alias Properties =
     , types : String
     , nst : Maybe Int
     , dmin : Float
-    , rms : Maybe Float
+    , rms : Float
     , gap : Float
     , magType : String
     , purpleType : String
@@ -160,7 +160,7 @@ properties =
         |> Jpipe.required "types" Jdec.string
         |> Jpipe.optional "nst" (Jdec.nullable Jdec.int) Nothing
         |> Jpipe.required "dmin" Jdec.float
-        |> Jpipe.optional "rms" (Jdec.nullable Jdec.float) Nothing
+        |> Jpipe.required "rms" Jdec.float
         |> Jpipe.required "gap" Jdec.float
         |> Jpipe.required "magType" Jdec.string
         |> Jpipe.required "type" Jdec.string
@@ -190,7 +190,7 @@ encodeProperties x =
         , ("types", Jenc.string x.types)
         , ("nst", makeNullableEncoder Jenc.int x.nst)
         , ("dmin", Jenc.float x.dmin)
-        , ("rms", makeNullableEncoder Jenc.float x.rms)
+        , ("rms", Jenc.float x.rms)
         , ("gap", Jenc.float x.gap)
         , ("magType", Jenc.string x.magType)
         , ("type", Jenc.string x.purpleType)

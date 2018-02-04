@@ -39,7 +39,7 @@ class Properties {
     types: String
     nst: Maybe<Int>
     dmin: Double
-    rms: Maybe<Double>
+    rms: Double
     gap: Double
     magType: String
     type: String

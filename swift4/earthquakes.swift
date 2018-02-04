@@ -34,9 +34,7 @@ struct Properties: Codable {
     let net, code, ids, sources: String
     let types: String
     let nst: Int?
-    let dmin: Double
-    let rms: Double?
-    let gap: Double
+    let dmin, rms, gap: Double
     let magType, type, title: String
 }
 

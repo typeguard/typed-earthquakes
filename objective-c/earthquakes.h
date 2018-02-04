@@ -61,7 +61,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)             NSString *types;
 @property (nonatomic, nullable, strong) NSNumber *nst;
 @property (nonatomic, assign)           double dmin;
-@property (nonatomic, nullable, strong) NSNumber *rms;
+@property (nonatomic, assign)           double rms;
 @property (nonatomic, assign)           double gap;
 @property (nonatomic, copy)             NSString *magType;
 @property (nonatomic, copy)             NSString *type;

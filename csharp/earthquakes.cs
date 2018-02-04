@@ -117,7 +117,7 @@ namespace QuickType
         public double Dmin { get; set; }
 
         [JsonProperty("rms")]
-        public double? Rms { get; set; }
+        public double Rms { get; set; }
 
         [JsonProperty("gap")]
         public double Gap { get; set; }
