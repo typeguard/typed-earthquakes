@@ -37,7 +37,7 @@ namespace quicktype {
         std::string ids;
         std::string sources;
         std::string types;
-        std::unique_ptr<int64_t> nst;
+        int64_t nst;
         double dmin;
         double rms;
         double gap;
@@ -75,32 +75,9 @@ namespace quicktype {
         }
         return json();
     }
-    
-    template <typename T>
-    inline std::unique_ptr<T> get_optional(const json &j, const char *property) {
-        if (j.find(property) != j.end())
-            return j.at(property).get<std::unique_ptr<T>>();
-        return std::unique_ptr<T>();
-    }
 }
 
 namespace nlohmann {
-    template <typename T>
-    struct adl_serializer<std::unique_ptr<T>> {
-        static void to_json(json& j, const std::unique_ptr<T>& opt) {
-            if (!opt)
-                j = nullptr;
-            else
-                j = *opt;
-        }
-
-        static std::unique_ptr<T> from_json(const json& j) {
-            if (j.is_null())
-                return std::unique_ptr<T>();
-            else
-                return std::unique_ptr<T>(new T(j.get<T>()));
-        }
-    };
 
     inline void from_json(const json& _j, struct quicktype::Geometry& _x) {
         _x.type = _j.at("type").get<std::string>();
@@ -133,7 +110,7 @@ namespace nlohmann {
         _x.ids = _j.at("ids").get<std::string>();
         _x.sources = _j.at("sources").get<std::string>();
         _x.types = _j.at("types").get<std::string>();
-        _x.nst = quicktype::get_optional<int64_t>(_j, "nst");
+        _x.nst = _j.at("nst").get<int64_t>();
         _x.dmin = _j.at("dmin").get<double>();
         _x.rms = _j.at("rms").get<double>();
         _x.gap = _j.at("gap").get<double>();
@@ -220,5 +197,4 @@ namespace nlohmann {
         _j["features"] = _x.features;
         _j["bbox"] = _x.bbox;
     }
-
 }

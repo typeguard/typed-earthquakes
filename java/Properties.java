@@ -23,7 +23,7 @@ public class Properties {
     private String ids;
     private String sources;
     private String types;
-    private Long nst;
+    private long nst;
     private double dmin;
     private double rms;
     private double gap;
@@ -127,9 +127,9 @@ public class Properties {
     public void setTypes(String value) { this.types = value; }
 
     @JsonProperty("nst")
-    public Long getNst() { return nst; }
+    public long getNst() { return nst; }
     @JsonProperty("nst")
-    public void setNst(Long value) { this.nst = value; }
+    public void setNst(long value) { this.nst = value; }
 
     @JsonProperty("dmin")
     public double getDmin() { return dmin; }

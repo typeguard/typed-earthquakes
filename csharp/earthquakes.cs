@@ -111,7 +111,7 @@ namespace QuickType
         public string Types { get; set; }
 
         [JsonProperty("nst")]
-        public long? Nst { get; set; }
+        public long Nst { get; set; }
 
         [JsonProperty("dmin")]
         public double Dmin { get; set; }

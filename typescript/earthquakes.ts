@@ -46,7 +46,7 @@ export interface Properties {
     ids:     string;
     sources: string;
     types:   string;
-    nst?:    number;
+    nst:     number;
     dmin:    number;
     rms:     number;
     gap:     number;
@@ -189,7 +189,7 @@ export module Convert {
             ids: "",
             sources: "",
             types: "",
-            nst: U(0, null),
+            nst: 0,
             dmin: 3.14,
             rms: 3.14,
             gap: 3.14,

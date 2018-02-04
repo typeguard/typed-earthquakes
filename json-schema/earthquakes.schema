@@ -96,15 +96,7 @@
                     "type": "string"
                 },
                 "nst": {
-                    "oneOf": [
-                        {
-                            "type": "integer"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "title": "nst"
+                    "type": "integer"
                 },
                 "dmin": {
                     "type": "number"

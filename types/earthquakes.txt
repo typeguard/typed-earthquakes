@@ -37,7 +37,7 @@ class Properties {
     ids: String
     sources: String
     types: String
-    nst: Maybe<Int>
+    nst: Int
     dmin: Double
     rms: Double
     gap: Double

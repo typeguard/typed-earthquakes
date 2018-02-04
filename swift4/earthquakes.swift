@@ -33,7 +33,7 @@ struct Properties: Codable {
     let tsunami, sig: Int
     let net, code, ids, sources: String
     let types: String
-    let nst: Int?
+    let nst: Int
     let dmin, rms, gap: Double
     let magType, type, title: String
 }
