@@ -96,16 +96,40 @@
                     "type": "string"
                 },
                 "nst": {
-                    "type": "integer"
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "gap"
                 },
                 "dmin": {
-                    "type": "number"
+                    "oneOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "dmin"
                 },
                 "rms": {
                     "type": "number"
                 },
                 "gap": {
-                    "type": "number"
+                    "oneOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "title": "gap"
                 },
                 "magType": {
                     "type": "string"

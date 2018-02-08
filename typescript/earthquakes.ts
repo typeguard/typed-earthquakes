@@ -46,10 +46,10 @@ export interface Properties {
     ids:     string;
     sources: string;
     types:   string;
-    nst:     number;
-    dmin:    number;
+    nst?:    number;
+    dmin?:   number;
     rms:     number;
-    gap:     number;
+    gap?:    number;
     magType: string;
     type:    string;
     title:   string;
@@ -189,10 +189,10 @@ export module Convert {
             ids: "",
             sources: "",
             types: "",
-            nst: 0,
-            dmin: 3.14,
+            nst: U(0, null),
+            dmin: U(3.14, null),
             rms: 3.14,
-            gap: 3.14,
+            gap: U(0, null),
             magType: "",
             type: "",
             title: "",

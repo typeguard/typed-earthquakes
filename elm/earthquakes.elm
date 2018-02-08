@@ -66,10 +66,10 @@ type alias Properties =
     , ids : String
     , sources : String
     , types : String
-    , nst : Int
-    , dmin : Float
+    , nst : Maybe Int
+    , dmin : Maybe Float
     , rms : Float
-    , gap : Float
+    , gap : Maybe Int
     , magType : String
     , purpleType : String
     , title : String
@@ -158,10 +158,10 @@ properties =
         |> Jpipe.required "ids" Jdec.string
         |> Jpipe.required "sources" Jdec.string
         |> Jpipe.required "types" Jdec.string
-        |> Jpipe.required "nst" Jdec.int
-        |> Jpipe.required "dmin" Jdec.float
+        |> Jpipe.optional "nst" (Jdec.nullable Jdec.int) Nothing
+        |> Jpipe.optional "dmin" (Jdec.nullable Jdec.float) Nothing
         |> Jpipe.required "rms" Jdec.float
-        |> Jpipe.required "gap" Jdec.float
+        |> Jpipe.optional "gap" (Jdec.nullable Jdec.int) Nothing
         |> Jpipe.required "magType" Jdec.string
         |> Jpipe.required "type" Jdec.string
         |> Jpipe.required "title" Jdec.string
@@ -188,10 +188,10 @@ encodeProperties x =
         , ("ids", Jenc.string x.ids)
         , ("sources", Jenc.string x.sources)
         , ("types", Jenc.string x.types)
-        , ("nst", Jenc.int x.nst)
-        , ("dmin", Jenc.float x.dmin)
+        , ("nst", makeNullableEncoder Jenc.int x.nst)
+        , ("dmin", makeNullableEncoder Jenc.float x.dmin)
         , ("rms", Jenc.float x.rms)
-        , ("gap", Jenc.float x.gap)
+        , ("gap", makeNullableEncoder Jenc.int x.gap)
         , ("magType", Jenc.string x.magType)
         , ("type", Jenc.string x.purpleType)
         , ("title", Jenc.string x.title)

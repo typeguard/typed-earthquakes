@@ -33,8 +33,10 @@ struct Properties: Codable {
     let tsunami, sig: Int
     let net, code, ids, sources: String
     let types: String
-    let nst: Int
-    let dmin, rms, gap: Double
+    let nst: Int?
+    let dmin: Double?
+    let rms: Double
+    let gap: Int?
     let magType, type, title: String
 }
 

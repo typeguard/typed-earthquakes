@@ -23,10 +23,10 @@ public class Properties {
     private String ids;
     private String sources;
     private String types;
-    private long nst;
-    private double dmin;
+    private Long nst;
+    private Double dmin;
     private double rms;
-    private double gap;
+    private Long gap;
     private String magType;
     private String type;
     private String title;
@@ -127,14 +127,14 @@ public class Properties {
     public void setTypes(String value) { this.types = value; }
 
     @JsonProperty("nst")
-    public long getNst() { return nst; }
+    public Long getNst() { return nst; }
     @JsonProperty("nst")
-    public void setNst(long value) { this.nst = value; }
+    public void setNst(Long value) { this.nst = value; }
 
     @JsonProperty("dmin")
-    public double getDmin() { return dmin; }
+    public Double getDmin() { return dmin; }
     @JsonProperty("dmin")
-    public void setDmin(double value) { this.dmin = value; }
+    public void setDmin(Double value) { this.dmin = value; }
 
     @JsonProperty("rms")
     public double getRms() { return rms; }
@@ -142,9 +142,9 @@ public class Properties {
     public void setRms(double value) { this.rms = value; }
 
     @JsonProperty("gap")
-    public double getGap() { return gap; }
+    public Long getGap() { return gap; }
     @JsonProperty("gap")
-    public void setGap(double value) { this.gap = value; }
+    public void setGap(Long value) { this.gap = value; }
 
     @JsonProperty("magType")
     public String getMagType() { return magType; }
