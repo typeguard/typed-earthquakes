@@ -46,10 +46,10 @@ export interface Properties {
     ids:     string;
     sources: string;
     types:   string;
-    nst?:    number;
-    dmin?:   number;
+    nst:     number;
+    dmin:    number;
     rms:     number;
-    gap?:    number;
+    gap:     number;
     magType: string;
     type:    string;
     title:   string;
@@ -68,7 +68,7 @@ export interface Metadata {
 // and asserts the results of JSON.parse at runtime
 export module Convert {
     export function toEarthquakes(json: string): Earthquakes {
-        return cast(JSON.parse(json), O("Earthquakes"));
+        return cast(JSON.parse(json), o("Earthquakes"));
     }
 
     export function earthquakesToJson(value: Earthquakes): string {
@@ -109,7 +109,7 @@ export module Convert {
 
     function isValidArray(typ: any, val: any): boolean {
         // val must be an array with no invalid elements
-        return Array.isArray(val) && val.every((element, i) => {
+        return Array.isArray(val) && val.every(element => {
             return isValid(typ, element);
         });
     }
@@ -132,42 +132,42 @@ export module Convert {
         });
     }
 
-    function A(typ: any) {
+    function a(typ: any) {
         return { typ, isArray: true };
     }
 
-    function E(name: string) {
+    function e(name: string) {
         return { name, isEnum: true };
     }
 
-    function U(...typs: any[]) {
+    function u(...typs: any[]) {
         return { typs, isUnion: true };
     }
 
-    function M(typ: any) {
+    function m(typ: any) {
         return { typ, isMap: true };
     }
 
-    function O(className: string) {
+    function o(className: string) {
         return { cls: className, isObject: true };
     }
 
     const typeMap: any = {
         "Earthquakes": {
             type: "",
-            metadata: O("Metadata"),
-            features: A(O("Feature")),
-            bbox: A(3.14),
+            metadata: o("Metadata"),
+            features: a(o("Feature")),
+            bbox: a(3.14),
         },
         "Feature": {
             type: "",
-            properties: O("Properties"),
-            geometry: O("Geometry"),
+            properties: o("Properties"),
+            geometry: o("Geometry"),
             id: "",
         },
         "Geometry": {
             type: "",
-            coordinates: A(3.14),
+            coordinates: a(3.14),
         },
         "Properties": {
             mag: 3.14,
@@ -189,10 +189,10 @@ export module Convert {
             ids: "",
             sources: "",
             types: "",
-            nst: U(0, null),
-            dmin: U(3.14, null),
+            nst: 0,
+            dmin: 3.14,
             rms: 3.14,
-            gap: U(0, null),
+            gap: 0,
             magType: "",
             type: "",
             title: "",

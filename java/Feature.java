@@ -25,7 +25,7 @@ public class Feature {
     public void setGeometry(Geometry value) { this.geometry = value; }
 
     @JsonProperty("id")
-    public String getId() { return id; }
+    public String getID() { return id; }
     @JsonProperty("id")
-    public void setId(String value) { this.id = value; }
+    public void setID(String value) { this.id = value; }
 }

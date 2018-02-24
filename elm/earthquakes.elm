@@ -1,9 +1,9 @@
 -- To decode the JSON data, add this file to your project, run
---
+-- 
 --     elm-package install NoRedInk/elm-decode-pipeline
---
+-- 
 -- add these imports
---
+-- 
 --     import Json.Decode exposing (decodeString)`);
 --     import QuickType exposing (earthquakes)
 --
@@ -28,21 +28,21 @@ import Dict exposing (Dict, map, toList)
 import Array exposing (Array, map)
 
 type alias Earthquakes =
-    { purpleType : String
+    { earthquakesType : String
     , metadata : Metadata
     , features : Array Feature
     , bbox : Array Float
     }
 
 type alias Feature =
-    { purpleType : String
+    { featureType : String
     , properties : Properties
     , geometry : Geometry
     , id : String
     }
 
 type alias Geometry =
-    { purpleType : String
+    { geometryType : String
     , coordinates : Array Float
     }
 
@@ -66,12 +66,12 @@ type alias Properties =
     , ids : String
     , sources : String
     , types : String
-    , nst : Maybe Int
-    , dmin : Maybe Float
+    , nst : Int
+    , dmin : Float
     , rms : Float
-    , gap : Maybe Int
+    , gap : Int
     , magType : String
-    , purpleType : String
+    , propertiesType : String
     , title : String
     }
 
@@ -100,7 +100,7 @@ earthquakes =
 encodeEarthquakes : Earthquakes -> Jenc.Value
 encodeEarthquakes x =
     Jenc.object
-        [ ("type", Jenc.string x.purpleType)
+        [ ("type", Jenc.string x.earthquakesType)
         , ("metadata", encodeMetadata x.metadata)
         , ("features", makeArrayEncoder encodeFeature x.features)
         , ("bbox", makeArrayEncoder Jenc.float x.bbox)
@@ -117,7 +117,7 @@ feature =
 encodeFeature : Feature -> Jenc.Value
 encodeFeature x =
     Jenc.object
-        [ ("type", Jenc.string x.purpleType)
+        [ ("type", Jenc.string x.featureType)
         , ("properties", encodeProperties x.properties)
         , ("geometry", encodeGeometry x.geometry)
         , ("id", Jenc.string x.id)
@@ -132,7 +132,7 @@ geometry =
 encodeGeometry : Geometry -> Jenc.Value
 encodeGeometry x =
     Jenc.object
-        [ ("type", Jenc.string x.purpleType)
+        [ ("type", Jenc.string x.geometryType)
         , ("coordinates", makeArrayEncoder Jenc.float x.coordinates)
         ]
 
@@ -158,10 +158,10 @@ properties =
         |> Jpipe.required "ids" Jdec.string
         |> Jpipe.required "sources" Jdec.string
         |> Jpipe.required "types" Jdec.string
-        |> Jpipe.optional "nst" (Jdec.nullable Jdec.int) Nothing
-        |> Jpipe.optional "dmin" (Jdec.nullable Jdec.float) Nothing
+        |> Jpipe.required "nst" Jdec.int
+        |> Jpipe.required "dmin" Jdec.float
         |> Jpipe.required "rms" Jdec.float
-        |> Jpipe.optional "gap" (Jdec.nullable Jdec.int) Nothing
+        |> Jpipe.required "gap" Jdec.int
         |> Jpipe.required "magType" Jdec.string
         |> Jpipe.required "type" Jdec.string
         |> Jpipe.required "title" Jdec.string
@@ -188,12 +188,12 @@ encodeProperties x =
         , ("ids", Jenc.string x.ids)
         , ("sources", Jenc.string x.sources)
         , ("types", Jenc.string x.types)
-        , ("nst", makeNullableEncoder Jenc.int x.nst)
-        , ("dmin", makeNullableEncoder Jenc.float x.dmin)
+        , ("nst", Jenc.int x.nst)
+        , ("dmin", Jenc.float x.dmin)
         , ("rms", Jenc.float x.rms)
-        , ("gap", makeNullableEncoder Jenc.int x.gap)
+        , ("gap", Jenc.int x.gap)
         , ("magType", Jenc.string x.magType)
-        , ("type", Jenc.string x.purpleType)
+        , ("type", Jenc.string x.propertiesType)
         , ("title", Jenc.string x.title)
         ]
 

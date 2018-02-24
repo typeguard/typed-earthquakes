@@ -23,10 +23,10 @@ public class Properties {
     private String ids;
     private String sources;
     private String types;
-    private Long nst;
-    private Double dmin;
+    private long nst;
+    private double dmin;
     private double rms;
-    private Long gap;
+    private long gap;
     private String magType;
     private String type;
     private String title;
@@ -57,9 +57,9 @@ public class Properties {
     public void setTz(long value) { this.tz = value; }
 
     @JsonProperty("url")
-    public String getUrl() { return url; }
+    public String getURL() { return url; }
     @JsonProperty("url")
-    public void setUrl(String value) { this.url = value; }
+    public void setURL(String value) { this.url = value; }
 
     @JsonProperty("detail")
     public String getDetail() { return detail; }
@@ -77,9 +77,9 @@ public class Properties {
     public void setCdi(Object value) { this.cdi = value; }
 
     @JsonProperty("mmi")
-    public Object getMmi() { return mmi; }
+    public Object getMMI() { return mmi; }
     @JsonProperty("mmi")
-    public void setMmi(Object value) { this.mmi = value; }
+    public void setMMI(Object value) { this.mmi = value; }
 
     @JsonProperty("alert")
     public Object getAlert() { return alert; }
@@ -112,9 +112,9 @@ public class Properties {
     public void setCode(String value) { this.code = value; }
 
     @JsonProperty("ids")
-    public String getIds() { return ids; }
+    public String getIDS() { return ids; }
     @JsonProperty("ids")
-    public void setIds(String value) { this.ids = value; }
+    public void setIDS(String value) { this.ids = value; }
 
     @JsonProperty("sources")
     public String getSources() { return sources; }
@@ -127,24 +127,24 @@ public class Properties {
     public void setTypes(String value) { this.types = value; }
 
     @JsonProperty("nst")
-    public Long getNst() { return nst; }
+    public long getNst() { return nst; }
     @JsonProperty("nst")
-    public void setNst(Long value) { this.nst = value; }
+    public void setNst(long value) { this.nst = value; }
 
     @JsonProperty("dmin")
-    public Double getDmin() { return dmin; }
+    public double getDmin() { return dmin; }
     @JsonProperty("dmin")
-    public void setDmin(Double value) { this.dmin = value; }
+    public void setDmin(double value) { this.dmin = value; }
 
     @JsonProperty("rms")
-    public double getRms() { return rms; }
+    public double getRMS() { return rms; }
     @JsonProperty("rms")
-    public void setRms(double value) { this.rms = value; }
+    public void setRMS(double value) { this.rms = value; }
 
     @JsonProperty("gap")
-    public Long getGap() { return gap; }
+    public long getGap() { return gap; }
     @JsonProperty("gap")
-    public void setGap(Long value) { this.gap = value; }
+    public void setGap(long value) { this.gap = value; }
 
     @JsonProperty("magType")
     public String getMagType() { return magType; }

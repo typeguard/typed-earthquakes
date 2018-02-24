@@ -17,9 +17,9 @@ public class Metadata {
     public void setGenerated(long value) { this.generated = value; }
 
     @JsonProperty("url")
-    public String getUrl() { return url; }
+    public String getURL() { return url; }
     @JsonProperty("url")
-    public void setUrl(String value) { this.url = value; }
+    public void setURL(String value) { this.url = value; }
 
     @JsonProperty("title")
     public String getTitle() { return title; }
@@ -32,9 +32,9 @@ public class Metadata {
     public void setStatus(long value) { this.status = value; }
 
     @JsonProperty("api")
-    public String getApi() { return api; }
+    public String getAPI() { return api; }
     @JsonProperty("api")
-    public void setApi(String value) { this.api = value; }
+    public void setAPI(String value) { this.api = value; }
 
     @JsonProperty("count")
     public long getCount() { return count; }

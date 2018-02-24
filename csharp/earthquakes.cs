@@ -2,20 +2,22 @@
 //
 //    using QuickType;
 //
-//    var data = Earthquakes.FromJson(jsonString);
+//    var earthquakes = Earthquakes.FromJson(jsonString);
 
 namespace QuickType
 {
     using System;
-    using System.Net;
     using System.Collections.Generic;
+    using System.Net;
 
+    using System.Globalization;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Converters;
 
     public partial class Earthquakes
     {
         [JsonProperty("type")]
-        public string PurpleType { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("metadata")]
         public Metadata Metadata { get; set; }
@@ -30,7 +32,7 @@ namespace QuickType
     public partial class Feature
     {
         [JsonProperty("type")]
-        public string PurpleType { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("properties")]
         public Properties Properties { get; set; }
@@ -45,7 +47,7 @@ namespace QuickType
     public partial class Geometry
     {
         [JsonProperty("type")]
-        public string PurpleType { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("coordinates")]
         public double[] Coordinates { get; set; }
@@ -111,22 +113,22 @@ namespace QuickType
         public string Types { get; set; }
 
         [JsonProperty("nst")]
-        public long? Nst { get; set; }
+        public long Nst { get; set; }
 
         [JsonProperty("dmin")]
-        public double? Dmin { get; set; }
+        public double Dmin { get; set; }
 
         [JsonProperty("rms")]
         public double Rms { get; set; }
 
         [JsonProperty("gap")]
-        public long? Gap { get; set; }
+        public long Gap { get; set; }
 
         [JsonProperty("magType")]
         public string MagType { get; set; }
 
         [JsonProperty("type")]
-        public string PurpleType { get; set; }
+        public string Type { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
@@ -155,20 +157,26 @@ namespace QuickType
 
     public partial class Earthquakes
     {
-        public static Earthquakes FromJson(string json) => JsonConvert.DeserializeObject<Earthquakes>(json, Converter.Settings);
+        public static Earthquakes FromJson(string json) => JsonConvert.DeserializeObject<Earthquakes>(json, QuickType.Converter.Settings);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this Earthquakes self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this Earthquakes self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
-    public class Converter
+    internal class Converter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
+            Converters = { 
+                new IsoDateTimeConverter()
+                {
+                    DateTimeStyles = DateTimeStyles.AssumeUniversal,
+                },
+            },
         };
     }
 }
