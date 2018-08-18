@@ -44,9 +44,9 @@ type Properties struct {
 	Tz      int64       `json:"tz"`     
 	URL     string      `json:"url"`    
 	Detail  string      `json:"detail"` 
-	Felt    interface{} `json:"felt"`   
-	Cdi     interface{} `json:"cdi"`    
-	MMI     interface{} `json:"mmi"`    
+	Felt    *int64      `json:"felt"`   
+	Cdi     *int64      `json:"cdi"`    
+	MMI     *float64    `json:"mmi"`    
 	Alert   interface{} `json:"alert"`  
 	Status  string      `json:"status"` 
 	Tsunami int64       `json:"tsunami"`
@@ -56,10 +56,10 @@ type Properties struct {
 	IDS     string      `json:"ids"`    
 	Sources string      `json:"sources"`
 	Types   string      `json:"types"`  
-	Nst     int64       `json:"nst"`    
-	Dmin    float64     `json:"dmin"`   
+	Nst     *int64      `json:"nst"`    
+	Dmin    *float64    `json:"dmin"`   
 	RMS     float64     `json:"rms"`    
-	Gap     int64       `json:"gap"`    
+	Gap     *int64      `json:"gap"`    
 	MagType string      `json:"magType"`
 	Type    string      `json:"type"`   
 	Title   string      `json:"title"`  

@@ -3,12 +3,12 @@
 // #[macro_use]
 // extern crate serde_derive;
 // extern crate serde_json;
-// 
-// use generated_module::Earthquakes;
-// 
+//
+// use generated_module::[object Object];
+//
 // fn main() {
 //     let json = r#"{"answer": 42}"#;
-//     let model: Earthquakes = serde_json::from_str(&json).unwrap();
+//     let model: [object Object] = serde_json::from_str(&json).unwrap();
 // }
 
 extern crate serde_json;
@@ -76,13 +76,13 @@ pub struct Properties {
     detail: String,
 
     #[serde(rename = "felt")]
-    felt: Option<serde_json::Value>,
+    felt: Option<i64>,
 
     #[serde(rename = "cdi")]
-    cdi: Option<serde_json::Value>,
+    cdi: Option<i64>,
 
     #[serde(rename = "mmi")]
-    mmi: Option<serde_json::Value>,
+    mmi: Option<f64>,
 
     #[serde(rename = "alert")]
     alert: Option<serde_json::Value>,
@@ -112,16 +112,16 @@ pub struct Properties {
     types: String,
 
     #[serde(rename = "nst")]
-    nst: i64,
+    nst: Option<i64>,
 
     #[serde(rename = "dmin")]
-    dmin: f64,
+    dmin: Option<f64>,
 
     #[serde(rename = "rms")]
     rms: f64,
 
     #[serde(rename = "gap")]
-    gap: i64,
+    gap: Option<i64>,
 
     #[serde(rename = "magType")]
     mag_type: String,

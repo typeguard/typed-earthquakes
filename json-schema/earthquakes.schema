@@ -1,38 +1,82 @@
 {
+    "$schema": "http://json-schema.org/draft-06/schema#",
     "$ref": "#/definitions/Earthquakes",
     "definitions": {
-        "Metadata": {
+        "Earthquakes": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "generated": {
-                    "type": "integer"
-                },
-                "url": {
+                "type": {
                     "type": "string"
                 },
-                "title": {
-                    "type": "string"
+                "metadata": {
+                    "$ref": "#/definitions/Metadata"
                 },
-                "status": {
-                    "type": "integer"
+                "features": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Feature"
+                    }
                 },
-                "api": {
-                    "type": "string"
-                },
-                "count": {
-                    "type": "integer"
+                "bbox": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
                 }
             },
             "required": [
-                "api",
-                "count",
-                "generated",
-                "status",
-                "title",
-                "url"
+                "bbox",
+                "features",
+                "metadata",
+                "type"
             ],
-            "title": "metadata"
+            "title": "Earthquakes"
+        },
+        "Feature": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "properties": {
+                    "$ref": "#/definitions/Properties"
+                },
+                "geometry": {
+                    "$ref": "#/definitions/Geometry"
+                },
+                "id": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "geometry",
+                "id",
+                "properties",
+                "type"
+            ],
+            "title": "Feature"
+        },
+        "Geometry": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "coordinates": {
+                    "type": "array",
+                    "items": {
+                        "type": "number"
+                    }
+                }
+            },
+            "required": [
+                "coordinates",
+                "type"
+            ],
+            "title": "Geometry"
         },
         "Properties": {
             "type": "object",
@@ -60,13 +104,34 @@
                     "type": "string"
                 },
                 "felt": {
-                    "type": "null"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "cdi": {
-                    "type": "null"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "mmi": {
-                    "type": "null"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "alert": {
                     "type": "null"
@@ -96,16 +161,37 @@
                     "type": "string"
                 },
                 "nst": {
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "dmin": {
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "rms": {
                     "type": "number"
                 },
                 "gap": {
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 },
                 "magType": {
                     "type": "string"
@@ -145,83 +231,40 @@
                 "updated",
                 "url"
             ],
-            "title": "properties"
+            "title": "Properties"
         },
-        "Geometry": {
+        "Metadata": {
             "type": "object",
             "additionalProperties": false,
             "properties": {
-                "type": {
+                "generated": {
+                    "type": "integer"
+                },
+                "url": {
                     "type": "string"
                 },
-                "coordinates": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
-                    }
+                "title": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "api": {
+                    "type": "string"
+                },
+                "count": {
+                    "type": "integer"
                 }
             },
             "required": [
-                "coordinates",
-                "type"
+                "api",
+                "count",
+                "generated",
+                "status",
+                "title",
+                "url"
             ],
-            "title": "geometry"
-        },
-        "Feature": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "properties": {
-                    "$ref": "#/definitions/Properties"
-                },
-                "geometry": {
-                    "$ref": "#/definitions/Geometry"
-                },
-                "id": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "geometry",
-                "id",
-                "properties",
-                "type"
-            ],
-            "title": "feature"
-        },
-        "Earthquakes": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-                "type": {
-                    "type": "string"
-                },
-                "metadata": {
-                    "$ref": "#/definitions/Metadata"
-                },
-                "features": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Feature"
-                    }
-                },
-                "bbox": {
-                    "type": "array",
-                    "items": {
-                        "type": "number"
-                    }
-                }
-            },
-            "required": [
-                "bbox",
-                "features",
-                "metadata",
-                "type"
-            ],
-            "title": "Earthquakes"
+            "title": "Metadata"
         }
     }
 }

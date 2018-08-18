@@ -8,7 +8,6 @@ namespace QuickType
 {
     using System;
     using System.Collections.Generic;
-    using System.Net;
 
     using System.Globalization;
     using Newtonsoft.Json;
@@ -77,13 +76,13 @@ namespace QuickType
         public string Detail { get; set; }
 
         [JsonProperty("felt")]
-        public object Felt { get; set; }
+        public long? Felt { get; set; }
 
         [JsonProperty("cdi")]
-        public object Cdi { get; set; }
+        public long? Cdi { get; set; }
 
         [JsonProperty("mmi")]
-        public object Mmi { get; set; }
+        public double? Mmi { get; set; }
 
         [JsonProperty("alert")]
         public object Alert { get; set; }
@@ -113,16 +112,16 @@ namespace QuickType
         public string Types { get; set; }
 
         [JsonProperty("nst")]
-        public long Nst { get; set; }
+        public long? Nst { get; set; }
 
         [JsonProperty("dmin")]
-        public double Dmin { get; set; }
+        public double? Dmin { get; set; }
 
         [JsonProperty("rms")]
         public double Rms { get; set; }
 
         [JsonProperty("gap")]
-        public long Gap { get; set; }
+        public long? Gap { get; set; }
 
         [JsonProperty("magType")]
         public string MagType { get; set; }
@@ -165,17 +164,14 @@ namespace QuickType
         public static string ToJson(this Earthquakes self) => JsonConvert.SerializeObject(self, QuickType.Converter.Settings);
     }
 
-    internal class Converter
+    internal static class Converter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
             MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
             DateParseHandling = DateParseHandling.None,
-            Converters = { 
-                new IsoDateTimeConverter()
-                {
-                    DateTimeStyles = DateTimeStyles.AssumeUniversal,
-                },
+            Converters = {
+                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
     }

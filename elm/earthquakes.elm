@@ -1,9 +1,9 @@
 -- To decode the JSON data, add this file to your project, run
--- 
+--
 --     elm-package install NoRedInk/elm-decode-pipeline
--- 
+--
 -- add these imports
--- 
+--
 --     import Json.Decode exposing (decodeString)`);
 --     import QuickType exposing (earthquakes)
 --
@@ -54,9 +54,9 @@ type alias Properties =
     , tz : Int
     , url : String
     , detail : String
-    , felt : ()
-    , cdi : ()
-    , mmi : ()
+    , felt : Maybe Int
+    , cdi : Maybe Int
+    , mmi : Maybe Float
     , alert : ()
     , status : String
     , tsunami : Int
@@ -66,10 +66,10 @@ type alias Properties =
     , ids : String
     , sources : String
     , types : String
-    , nst : Int
-    , dmin : Float
+    , nst : Maybe Int
+    , dmin : Maybe Float
     , rms : Float
-    , gap : Int
+    , gap : Maybe Int
     , magType : String
     , propertiesType : String
     , title : String
@@ -146,9 +146,9 @@ properties =
         |> Jpipe.required "tz" Jdec.int
         |> Jpipe.required "url" Jdec.string
         |> Jpipe.required "detail" Jdec.string
-        |> Jpipe.optional "felt" (Jdec.null ()) ()
-        |> Jpipe.optional "cdi" (Jdec.null ()) ()
-        |> Jpipe.optional "mmi" (Jdec.null ()) ()
+        |> Jpipe.optional "felt" (Jdec.nullable Jdec.int) Nothing
+        |> Jpipe.optional "cdi" (Jdec.nullable Jdec.int) Nothing
+        |> Jpipe.optional "mmi" (Jdec.nullable Jdec.float) Nothing
         |> Jpipe.optional "alert" (Jdec.null ()) ()
         |> Jpipe.required "status" Jdec.string
         |> Jpipe.required "tsunami" Jdec.int
@@ -158,10 +158,10 @@ properties =
         |> Jpipe.required "ids" Jdec.string
         |> Jpipe.required "sources" Jdec.string
         |> Jpipe.required "types" Jdec.string
-        |> Jpipe.required "nst" Jdec.int
-        |> Jpipe.required "dmin" Jdec.float
+        |> Jpipe.optional "nst" (Jdec.nullable Jdec.int) Nothing
+        |> Jpipe.optional "dmin" (Jdec.nullable Jdec.float) Nothing
         |> Jpipe.required "rms" Jdec.float
-        |> Jpipe.required "gap" Jdec.int
+        |> Jpipe.optional "gap" (Jdec.nullable Jdec.int) Nothing
         |> Jpipe.required "magType" Jdec.string
         |> Jpipe.required "type" Jdec.string
         |> Jpipe.required "title" Jdec.string
@@ -176,9 +176,9 @@ encodeProperties x =
         , ("tz", Jenc.int x.tz)
         , ("url", Jenc.string x.url)
         , ("detail", Jenc.string x.detail)
-        , ("felt", always Jenc.null x.felt)
-        , ("cdi", always Jenc.null x.cdi)
-        , ("mmi", always Jenc.null x.mmi)
+        , ("felt", makeNullableEncoder Jenc.int x.felt)
+        , ("cdi", makeNullableEncoder Jenc.int x.cdi)
+        , ("mmi", makeNullableEncoder Jenc.float x.mmi)
         , ("alert", always Jenc.null x.alert)
         , ("status", Jenc.string x.status)
         , ("tsunami", Jenc.int x.tsunami)
@@ -188,10 +188,10 @@ encodeProperties x =
         , ("ids", Jenc.string x.ids)
         , ("sources", Jenc.string x.sources)
         , ("types", Jenc.string x.types)
-        , ("nst", Jenc.int x.nst)
-        , ("dmin", Jenc.float x.dmin)
+        , ("nst", makeNullableEncoder Jenc.int x.nst)
+        , ("dmin", makeNullableEncoder Jenc.float x.dmin)
         , ("rms", Jenc.float x.rms)
-        , ("gap", Jenc.int x.gap)
+        , ("gap", makeNullableEncoder Jenc.int x.gap)
         , ("magType", Jenc.string x.magType)
         , ("type", Jenc.string x.propertiesType)
         , ("title", Jenc.string x.title)

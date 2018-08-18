@@ -170,7 +170,8 @@ NSString *_Nullable QTEarthquakesToJSON(QTEarthquakes *earthquakes, NSStringEnco
 
 - (void)setValue:(nullable id)value forKey:(NSString *)key
 {
-    [super setValue:value forKey:QTFeature.properties[key]];
+    id resolved = QTFeature.properties[key];
+    if (resolved) [super setValue:value forKey:resolved];
 }
 
 - (NSDictionary *)JSONDictionary

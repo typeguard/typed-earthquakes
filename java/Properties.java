@@ -11,9 +11,9 @@ public class Properties {
     private long tz;
     private String url;
     private String detail;
-    private Object felt;
-    private Object cdi;
-    private Object mmi;
+    private Long felt;
+    private Long cdi;
+    private Double mmi;
     private Object alert;
     private String status;
     private long tsunami;
@@ -23,10 +23,10 @@ public class Properties {
     private String ids;
     private String sources;
     private String types;
-    private long nst;
-    private double dmin;
+    private Long nst;
+    private Double dmin;
     private double rms;
-    private long gap;
+    private Long gap;
     private String magType;
     private String type;
     private String title;
@@ -67,19 +67,19 @@ public class Properties {
     public void setDetail(String value) { this.detail = value; }
 
     @JsonProperty("felt")
-    public Object getFelt() { return felt; }
+    public Long getFelt() { return felt; }
     @JsonProperty("felt")
-    public void setFelt(Object value) { this.felt = value; }
+    public void setFelt(Long value) { this.felt = value; }
 
     @JsonProperty("cdi")
-    public Object getCdi() { return cdi; }
+    public Long getCdi() { return cdi; }
     @JsonProperty("cdi")
-    public void setCdi(Object value) { this.cdi = value; }
+    public void setCdi(Long value) { this.cdi = value; }
 
     @JsonProperty("mmi")
-    public Object getMMI() { return mmi; }
+    public Double getMMI() { return mmi; }
     @JsonProperty("mmi")
-    public void setMMI(Object value) { this.mmi = value; }
+    public void setMMI(Double value) { this.mmi = value; }
 
     @JsonProperty("alert")
     public Object getAlert() { return alert; }
@@ -127,14 +127,14 @@ public class Properties {
     public void setTypes(String value) { this.types = value; }
 
     @JsonProperty("nst")
-    public long getNst() { return nst; }
+    public Long getNst() { return nst; }
     @JsonProperty("nst")
-    public void setNst(long value) { this.nst = value; }
+    public void setNst(Long value) { this.nst = value; }
 
     @JsonProperty("dmin")
-    public double getDmin() { return dmin; }
+    public Double getDmin() { return dmin; }
     @JsonProperty("dmin")
-    public void setDmin(double value) { this.dmin = value; }
+    public void setDmin(Double value) { this.dmin = value; }
 
     @JsonProperty("rms")
     public double getRMS() { return rms; }
@@ -142,9 +142,9 @@ public class Properties {
     public void setRMS(double value) { this.rms = value; }
 
     @JsonProperty("gap")
-    public long getGap() { return gap; }
+    public Long getGap() { return gap; }
     @JsonProperty("gap")
-    public void setGap(long value) { this.gap = value; }
+    public void setGap(Long value) { this.gap = value; }
 
     @JsonProperty("magType")
     public String getMagType() { return magType; }
